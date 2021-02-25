@@ -70,13 +70,15 @@ public class NoterinoDemo extends JFrame implements ActionListener{
 
         JMenuItem m2Hel = new JMenuItem("Helvetica"); 
         JMenuItem m2Ar = new JMenuItem("Arial"); 
-        JMenuItem m22 = new JMenuItem("Color"); 
+        JMenu m22 = new JMenu("Color"); 
         
         
         JMenuItem m31= new JMenuItem("Copy");
         JMenuItem m32= new JMenuItem("Paste");
         JMenuItem m33= new JMenuItem("Cut");
-
+        
+        JMenuItem bg= new JMenuItem("Background");
+        JMenuItem fg= new JMenuItem("Font color");
         m1.add(mi1); 
         m1.add(mi2); 
         m1.add(mi3); 
@@ -84,7 +86,7 @@ public class NoterinoDemo extends JFrame implements ActionListener{
         m2.add(m21);
         m2.add(m22); 
         
-       
+        
         
         m21.add(m2Tim);
         m21.add(m2Hel);
@@ -100,6 +102,11 @@ public class NoterinoDemo extends JFrame implements ActionListener{
         m2Ar.addActionListener(this);
 
         m22.addActionListener(this); 
+        m22.add(bg);
+        m22.add(fg);
+        bg.addActionListener(this);
+        fg.addActionListener(this);
+
         
         m31.addActionListener(this);
         m32.addActionListener(this);
@@ -210,8 +217,16 @@ public class NoterinoDemo extends JFrame implements ActionListener{
 		}
 		else if(s.equals("Times New Roman")) {
 			t.setFont(new Font("Times New Roman", 2, 12));
+		}else if (s.equals("Font color")) {
+			JColorChooser colorChooser= new JColorChooser();
+			Color color= colorChooser.showDialog(null, "Choose a color", Color.BLACK);
+			t.setForeground(color);
 		}
-		
+		else if (s.equals("Background")) {
+			JColorChooser colorChooser= new JColorChooser();
+			Color color= colorChooser.showDialog(null, "Choose a color", Color.BLACK);
+			t.setBackground(color);
+		}
 	}
 
 }
